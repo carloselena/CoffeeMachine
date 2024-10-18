@@ -1,0 +1,6 @@
+C:\Users\elena\source\repos\CoffeeMachine\CoffeeMachineTests\obj\Debug\net8.0\CoffeeMachineTests.csproj.AssemblyReference.cache
+C:\Users\elena\source\repos\CoffeeMachine\CoffeeMachineTests\obj\Debug\net8.0\CoffeeMachineTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elena\source\repos\CoffeeMachine\CoffeeMachineTests\obj\Debug\net8.0\CoffeeMachineTests.AssemblyInfoInputs.cache
+C:\Users\elena\source\repos\CoffeeMachine\CoffeeMachineTests\obj\Debug\net8.0\CoffeeMachineTests.AssemblyInfo.cs
+C:\Users\elena\source\repos\CoffeeMachine\CoffeeMachineTests\obj\Debug\net8.0\CoffeeMachineTests.csproj.CoreCompileInputs.cache
+C:\Users\elena\source\repos\CoffeeMachine\CoffeeMachineTests\obj\Debug\net8.0\CoffeeMachineTests.sourcelink.json

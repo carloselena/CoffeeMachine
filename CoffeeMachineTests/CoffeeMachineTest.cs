@@ -1,139 +1,138 @@
 ﻿using CoffeeMachine;
-using System.Runtime.CompilerServices;
 
 namespace CoffeeMachineTests
 {
     [TestClass]
     public class CoffeeMachineTest
     {
-        CoffeeMaker coffeeMaker;
-        Cup smallCup;
-        Cup mediumCup;
-        Cup largeCup;
-        SugarSupplier sugarSupplier;
-        CoffeeMachineClass coffeeMachine;
+        CoffeeMaker CoffeeMaker;
+        SmallCup SmallCup;
+        MediumCup MediumCup;
+        LargeCup LargeCup;
+        SugarSupplier SugarSupplier;
+        CoffeeMachineClass CoffeeMachine;
 
         [TestInitialize]
         public void SetUp()
         {
-            coffeeMaker = new CoffeeMaker(50);
-            smallCup = new Cup(5, 10);
-            mediumCup = new Cup(5, 20);
-            largeCup = new Cup(5, 30);
-            sugarSupplier = new SugarSupplier(20);
+            CoffeeMaker = new CoffeeMaker(50);
+            SmallCup = new SmallCup(5);
+            MediumCup = new MediumCup(5);
+            LargeCup = new LargeCup(5);
+            SugarSupplier = new SugarSupplier(20);
 
-            coffeeMachine = new CoffeeMachineClass();
-            coffeeMachine.SetCoffeeMaker(coffeeMaker);
-            coffeeMachine.SetSmallCups(smallCup);
-            coffeeMachine.SetMediumCups(mediumCup);
-            coffeeMachine.SetLargeCups(largeCup);
-            coffeeMachine.SetSugarSupplier(sugarSupplier);
+            CoffeeMachine = new CoffeeMachineClass();
+            CoffeeMachine.CoffeeMaker = CoffeeMaker;
+            CoffeeMachine.SmallCups = SmallCup;
+            CoffeeMachine.MediumCups = MediumCup;
+            CoffeeMachine.LargeCups = LargeCup;
+            CoffeeMachine.SugarSupplier = SugarSupplier;
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ShouldReturnASmallCup()
         {
-            Cup cup = coffeeMachine.GetCupType("small");
+            Cup? cup = CoffeeMachine.GetCupType("small");
 
-            Assert.AreEqual(coffeeMachine.SmallCup, cup);
+            Assert.AreEqual(CoffeeMachine.SmallCups, cup);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ShouldReturnAMediumCup()
         {
-            Cup cup = coffeeMachine.GetCupType("medium");
+            Cup? cup = CoffeeMachine.GetCupType("medium");
 
-            Assert.AreEqual(coffeeMachine.MediumCup, cup);
+            Assert.AreEqual(CoffeeMachine.MediumCups, cup);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ShouldReturnALargaCup()
         {
-            Cup cup = coffeeMachine.GetCupType("large");
+            Cup? cup = CoffeeMachine.GetCupType("large");
 
-            Assert.AreEqual(coffeeMachine.LargeCup, cup);
+            Assert.AreEqual(CoffeeMachine.LargeCups, cup);
         }
 
-        //[TestMethod]
-        public void ShouldReturnThereAreNoCups()
+        [TestMethod]
+        public void ShouldReturnThereAreNotEnoughCups()
         {
-            Cup cup = coffeeMachine.GetCupType("small");
+            Cup? cup = CoffeeMachine.GetCupType("medium");
 
-            string result = coffeeMachine.GetCoffeeCup(cup, 10, 2);
+            string result = CoffeeMachine.GetCoffeeCup(cup, 6, 2);
 
-            Assert.AreEqual("No hay vasos", result);
+            Assert.AreEqual("No hay suficientes vasos", result);
         }
 
-        //[TestMethod]
-        public void ShouldReturnThereIsNoCoffee()
+        [TestMethod]
+        public void ShouldReturnThereIsNotEnoughSugar()
         {
-            coffeeMaker = CoffeeMaker(5);
-            coffeeMachine.SetCoffeeMaker(coffeeMaker);
+            SugarSupplier sugarSupplier = new SugarSupplier(4);
+            CoffeeMachine.SugarSupplier = sugarSupplier;
 
-            Cup cup = coffeeMachine.GetCupType("small");
+            Cup? cup = CoffeeMachine.GetCupType("small");
 
-            string result = coffeeMachine.GetCoffeeCup(cup, 1, 2);
+            string result = CoffeeMachine.GetCoffeeCup(cup, 2, 3);
 
-            Assert.AreEqual("No hay café", result);
+            Assert.AreEqual("No hay suficiente azúcar", result);
         }
 
-        //[TestMethod]
-        public void ShouldReturnThereIsNoSugar()
+        [TestMethod]
+        public void ShouldReturnThereIsNotEnoughCoffee()
         {
-            sugarSupplier = new SugarSupplier(2);
-            coffeeMachine.SetSugarSupplier(sugarSupplier);
+            CoffeeMaker coffeeMaker = new CoffeeMaker(5);
+            CoffeeMachine.CoffeeMaker = coffeeMaker;
 
-            Cup cup = coffeeMachine.GetCupType("small");
+            Cup? cup = CoffeeMachine.GetCupType("small");
 
-            string result = coffeeMachine.GetCoffeeCup(cup, 1, 3);
+            string result = CoffeeMachine.GetCoffeeCup(cup, 2, 2);
 
-            Assert.AreEqual("No hay azúcar", result);
+            Assert.AreEqual("No hay suficiente café", result);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ShouldSubtractCoffee()
         {
-            Cup cup = coffeeMachine.GetCupType("small");
+            Cup? cup = CoffeeMachine.GetCupType("small");
 
-            coffeeMachine.GetCoffeeCup(cup, 1, 3);
+            CoffeeMachine.GetCoffeeCup(cup, 1, 3);
 
-            int result = coffeeMachine.GetCoffeeMaker().GetCoffeeQuantity();
+            int result = CoffeeMachine.CoffeeMaker.CoffeeQuantity;
 
-            Assert.AreEqual(40, result);
+            Assert.AreEqual(47, result);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ShouldSubtractCup()
         {
-            Cup cup = coffeeMachine.GetCupType("small");
+            Cup? cup = CoffeeMachine.GetCupType("small");
 
-            coffeeMachine.GetCoffeeCup(cup, 1, 3);
+            CoffeeMachine.GetCoffeeCup(cup, 1, 3);
 
-            int result = coffeeMachine.GetSmallCups().GetCupQuantity();
+            int result = CoffeeMachine.SmallCups.Quantity;
 
             Assert.AreEqual(4, result);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ShouldSubtractSugar()
         {
-            Cup cup = coffeeMachine.GetCupType("small");
+            Cup? cup = CoffeeMachine.GetCupType("small");
 
-            coffeeMachine.GetCoffeeCup(cup, 1, 3);
+            CoffeeMachine.GetCoffeeCup(cup, 1, 3);
 
-            int result = coffeeMachine.GetSugarSupplier().GetSugarQuantity();
+            int result = CoffeeMachine.SugarSupplier.SugarQuantity;
 
             Assert.AreEqual(17, result);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ShouldReturnCongratulations()
         {
-            Cup cup = coffeeMachine.GetCupType("small");
+            Cup? cup = CoffeeMachine.GetCupType("small");
 
-            string result = coffeeMachine.GetCoffeeCup(cup, 1, 3);
+            string result = CoffeeMachine.GetCoffeeCup(cup, 1, 3);
 
-            Assert.AreEqual("¡Felicitaciones!", result);
+            Assert.AreEqual("¡Felicidades!", result);
         }
     }
 }

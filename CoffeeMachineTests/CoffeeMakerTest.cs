@@ -5,27 +5,27 @@ namespace CoffeeMachineTests
     [TestClass]
     public class CoffeeMakerTest
     {
-        //[TestMethod]
+        [TestMethod]
         public void ShouldReturnTrueIfThereIsEnoughCoffee()
         {
             CoffeeMaker coffeeMaker = new CoffeeMaker(10);
 
-            bool result = coffeeMaker.HasCoffee(5);
+            bool result = coffeeMaker.HasEnoughCoffee(5);
 
             Assert.IsTrue(result);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ShouldReturnFalseIfThereIsNotEnoughCoffee()
         {
             CoffeeMaker coffeeMaker = new CoffeeMaker(10);
 
-            bool result = coffeeMaker.HasCoffee(11);
+            bool result = coffeeMaker.HasEnoughCoffee(11);
 
             Assert.IsFalse(result);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ShouldSubtractCoffeeFromCoffeeMaker()
         {
             CoffeeMaker coffeeMaker = new CoffeeMaker(10);

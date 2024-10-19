@@ -1,12 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CoffeeMachine
+﻿namespace CoffeeMachine
 {
     public class SugarSupplier
     {
+        public int SugarQuantity { get; set; }
+
+        public SugarSupplier(int sugarQuantity)
+        {
+            SugarQuantity = sugarQuantity;
+        }
+
+        public bool HasEnoughSugar(int sugarQuantityNeeded)
+        {
+            if (SugarQuantity < sugarQuantityNeeded)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public void GiveSugar(int sugarQuantity)
+        {
+            SugarQuantity -= sugarQuantity;
+        }
     }
 }

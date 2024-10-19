@@ -7,13 +7,13 @@ namespace CoffeeMachineTests
     {
         SugarSupplier sugarSupplier;
 
-        //[TestInitialize]
+        [TestInitialize]
         public void SetUp()
         {
             sugarSupplier = new SugarSupplier(10);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ShouldReturnTrueIfThereIsEnoughSugar()
         {
             bool result = sugarSupplier.HasEnoughSugar(5);
@@ -25,7 +25,7 @@ namespace CoffeeMachineTests
             Assert.IsTrue(result);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ShouldReturnFalseIfThereIsNotEnoughSugar()
         {
             bool result = sugarSupplier.HasEnoughSugar(15);
@@ -33,16 +33,16 @@ namespace CoffeeMachineTests
             Assert.IsFalse(result);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ShouldSubtractSugarFromSugarSupplier()
         {
             sugarSupplier.GiveSugar(5);
 
-            Assert.AreEqual(5, sugarSupplier.Quantity);
+            Assert.AreEqual(5, sugarSupplier.SugarQuantity);
 
             sugarSupplier.GiveSugar(2);
 
-            Assert.AreEqual(3, sugarSupplier.Quantity());
+            Assert.AreEqual(3, sugarSupplier.SugarQuantity);
         }
     }
 }

@@ -8,25 +8,27 @@ namespace CoffeeMachineTests
         [TestMethod]
         public void ShouldReturnTrueIfThereAreEnoughCups()
         {
-            Cup smallCup = new Cup(2, 10);
+            Cup smallCup = new SmallCup(2);
 
-            bool result = smallCup.HasCups(1);
+            bool result = smallCup.HasEnoughCups(1);
 
             Assert.IsTrue(result);
         }
 
+        [TestMethod]
         public void ShouldReturnFalseIfThereAreNotEnoughCups()
         {
-            Cup smallCup = new Cup(1, 10);
+            Cup smallCup = new SmallCup(1);
 
-            bool result = smallCup.HasCups(2);
+            bool result = smallCup.HasEnoughCups(2);
 
             Assert.IsFalse(result);
         }
 
+        [TestMethod]
         public void ShouldSubtractCupQuantity()
         {
-            Cup smallCup = new Cup(5, 10);
+            Cup smallCup = new SmallCup(5);
 
             smallCup.GiveCups(1);
 

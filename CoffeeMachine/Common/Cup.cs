@@ -1,9 +1,9 @@
-﻿namespace CoffeeMachine
+﻿namespace CoffeeMachine.Common
 {
     public abstract class Cup
     {
         public int Quantity { get; set; }
-        public virtual int Size {  get; set; }
+        public virtual int Size { get; set; }
         public Cup(int cupQuantity)
         {
             Quantity = cupQuantity;
@@ -11,7 +11,7 @@
 
         public bool HasEnoughCups(int cupQuantityNeeded)
         {
-            if (this.Quantity < cupQuantityNeeded)
+            if (Quantity < cupQuantityNeeded)
             {
                 return false;
             }
@@ -20,7 +20,7 @@
 
         public void GiveCups(int cupQuantity)
         {
-            this.Quantity -= cupQuantity;
+            Quantity -= cupQuantity;
         }
     }
 }

@@ -1,4 +1,5 @@
 using CoffeeMachine;
+using CoffeeMachine.Common;
 
 namespace CoffeeMachineTests
 {

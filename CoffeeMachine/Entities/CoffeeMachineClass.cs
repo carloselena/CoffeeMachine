@@ -1,4 +1,6 @@
-﻿namespace CoffeeMachine
+﻿using CoffeeMachine.Common;
+
+namespace CoffeeMachine.Entities
 {
     public class CoffeeMachineClass
     {
@@ -50,12 +52,12 @@
                 return "No hay suficiente café";
             }
 
-            if (cup == SmallCups) SmallCups.Quantity -= cupQuantity;
-            if (cup == MediumCups) MediumCups.Quantity -= cupQuantity;
-            if (cup == LargeCups) LargeCups.Quantity -= cupQuantity;
+            if (cup == SmallCups) SmallCups.GiveCups(cupQuantity);
+            if (cup == MediumCups) MediumCups.GiveCups(cupQuantity);
+            if (cup == LargeCups) LargeCups.GiveCups(cupQuantity);
 
-            SugarSupplier.SugarQuantity -= sugarQuantity * cupQuantity;
-            CoffeeMaker.CoffeeQuantity -= cup.Size * cupQuantity;
+            SugarSupplier.GiveSugar(sugarQuantity * cupQuantity);
+            CoffeeMaker.GiveCoffee(cup.Size * cupQuantity);
 
             return "¡Felicidades!";
 

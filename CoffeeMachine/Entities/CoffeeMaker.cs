@@ -1,4 +1,4 @@
-﻿namespace CoffeeMachine
+﻿namespace CoffeeMachine.Entities
 {
     public class CoffeeMaker
     {

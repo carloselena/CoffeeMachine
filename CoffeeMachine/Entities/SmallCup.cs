@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CoffeeMachine.Common;
 
-namespace CoffeeMachine
+namespace CoffeeMachine.Entities
 {
     public class SmallCup : Cup
     {

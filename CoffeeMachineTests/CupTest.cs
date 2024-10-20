@@ -1,4 +1,4 @@
-using CoffeeMachine;
+using CoffeeMachine.Entities;
 using CoffeeMachine.Common;
 
 namespace CoffeeMachineTests

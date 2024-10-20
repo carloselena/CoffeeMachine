@@ -1,2 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using CoffeeMachine.Entities;
+using CoffeeMachine.Common;
+
+namespace CoffeeMachine.Program
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Bienvenido a la Máquina de Café");
+        }
+    }
+}
